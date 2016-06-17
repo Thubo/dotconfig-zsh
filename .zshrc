@@ -49,6 +49,7 @@ export PATH=$HOME/.bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH_CUSTOM/lib/zstyle.zsh
 
 # Further config
 
