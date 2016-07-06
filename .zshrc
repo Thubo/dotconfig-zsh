@@ -61,7 +61,9 @@ bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
 # Dircolors
-eval "`dircolors`"
+if type dircolors > /dev/null; then
+  eval "`dircolors`"
+fi
 
 # Source aliases
 if [ -d $HOME/.helper/aliases ]; then
