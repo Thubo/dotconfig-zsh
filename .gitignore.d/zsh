@@ -1,6 +1,11 @@
 *
+!/.gitignore.d
 !/.gitignore.d/zsh
-!/.zsh/lib/zstyle.zsh
-!/.zshrc
+!/.zsh
 !/.zsh/README.md
+!/.zsh/lib
+!/.zsh/lib/zstyle.zsh
+!/.zsh/themes
 !/.zsh/themes/thubo.zsh-theme
+!/.zsh/zsh_startup.iterm
+!/.zshrc
