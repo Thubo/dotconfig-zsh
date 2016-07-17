@@ -60,6 +60,10 @@ export EDITOR=vim
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 
+# Make <Enter> work in tab completion on the first try
+# See also http://www.zsh.org/mla/users/2009/msg01018.html
+# bindkey -M menuselect '^M' .accept-line
+
 # Dircolors
 eval "`dircolors`"
 
@@ -72,3 +76,18 @@ fi
 if [ -d $HOME/.helper/functions ]; then
   for file in $HOME/.helper/functions/*.function; do . $file; done
 fi
+
+# Autojump
+if [[ -f /opt/autojump/bin/autojump.bash ]]; then
+  source "/opt/autojump/bin/autojump.bash"
+fi
+
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
+# Dynamic 'motd' - not realy a motd, but similar function
+if type dynmotd > /dev/null 2>&1 ; then
+  dynmotd
+fi
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
