@@ -41,7 +41,7 @@ ZSH_CUSTOM=$HOME/.zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker docker-compose git web-search vagrant)
+plugins=(autojump docker docker-compose git web-search vagrant)
 
 # User configuration
 
@@ -93,10 +93,10 @@ if [ -d $HOME/.helper/functions ]; then
 fi
 
 # Autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-if [[ -f /opt/autojump/bin/autojump.bash ]]; then
-  source "/opt/autojump/bin/autojump.bash"
-fi
+# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# if [[ -f /opt/autojump/bin/autojump.bash ]]; then
+#   source "/opt/autojump/bin/autojump.bash"
+# fi
 
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
