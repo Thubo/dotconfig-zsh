@@ -59,8 +59,8 @@ unsetopt share_history
 export EDITOR=vim
 
 # ...using CTRL+P/N
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
 
 # Make <Enter> work in tab completion on the first try
 # See also http://www.zsh.org/mla/users/2009/msg01018.html
