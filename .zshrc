@@ -41,7 +41,7 @@ ZSH_CUSTOM=$HOME/.zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker docker-compose git git-flow vagrant)
+plugins=(autojump kubectl docker docker-compose git git-flow vagrant)
 
 # User configuration
 
@@ -107,3 +107,5 @@ if type dynmotd > /dev/null 2>&1 ; then
 fi
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
