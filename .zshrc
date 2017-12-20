@@ -41,7 +41,7 @@ ZSH_CUSTOM=$HOME/.zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump kubectl docker docker-compose git git-flow vagrant)
+plugins=(autojump docker docker-compose git git-flow gradle kubectl vagrant)
 
 # User configuration
 
