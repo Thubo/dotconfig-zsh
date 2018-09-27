@@ -43,6 +43,9 @@ ZSH_CUSTOM=$HOME/.zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(autojump docker docker-compose git git-flow gradle kubectl vagrant)
 
+# Make autojump work on WSL
+unsetopt BG_NICE
+
 # User configuration
 
 export PATH=/usr/local/bin:$PATH
@@ -90,6 +93,11 @@ fi
 # Source functions
 if [ -d $HOME/.helper/functions ]; then
   for file in $HOME/.helper/functions/*.function; do . $file; done
+fi
+
+# Source completions
+if [ -d $HOME/.zsh/completion ]; then
+  for file in $HOME/.zsh/completion/*.completion; do . $file; done
 fi
 
 # Autojump

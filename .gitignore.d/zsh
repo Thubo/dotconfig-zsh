@@ -3,6 +3,8 @@
 !/.gitignore.d/zsh
 !/.zsh
 !/.zsh/README.md
+!/.zsh/completion
+!/.zsh/completion/*
 !/.zsh/lib
 !/.zsh/lib/zstyle.zsh
 !/.zsh/themes
