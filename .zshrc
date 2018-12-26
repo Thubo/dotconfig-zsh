@@ -100,11 +100,14 @@ if [ -d $HOME/.zsh/completion ]; then
   for file in $HOME/.zsh/completion/*.completion; do . $file; done
 fi
 
+# iterm2 integration
+[[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
+
+# fzf integration
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
 # Autojump
-# [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-# if [[ -f /opt/autojump/bin/autojump.bash ]]; then
-#   source "/opt/autojump/bin/autojump.bash"
-# fi
+[[ -f /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
@@ -115,5 +118,3 @@ if type dynmotd > /dev/null 2>&1 ; then
 fi
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
