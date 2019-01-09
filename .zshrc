@@ -74,12 +74,6 @@ if type dircolors > /dev/null; then
   eval "`dircolors`"
 fi
 
-# if [[ $(uname) -eq "Darwin" ]]; then
-#   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#     . $(brew --prefix)/etc/bash_completion
-#   fi
-# fi
-
 # Source iterm integration
 if [ -f $HOME/.zsh/zsh_startup.iterm ]; then
    source $HOME/.zsh/zsh_startup.iterm

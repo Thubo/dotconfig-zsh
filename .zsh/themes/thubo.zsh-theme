@@ -1,7 +1,10 @@
 function git_prompt() {
- if [[ ! $(git_prompt_info) == "" ]]; then
-   echo $(git_prompt_info)/ $(git_current_user_email)
- fi
+  # Disable git_prompt for WSL due to slow I/O
+  if ! grep -q Microsoft /proc/version; then
+    if [[ ! $(git_prompt_info) == "" ]]; then
+      echo $(git_prompt_info)/ $(git_current_user_email)
+    fi
+  fi
 }
 
 function toggle_prompt(){
