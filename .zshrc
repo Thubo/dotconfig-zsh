@@ -103,6 +103,15 @@ fi
 # Autojump
 [[ -f /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 
+# az completion
+[[ -f /usr/local/src/azure-cli/az.completion ]] && source /usr/local/src/azure-cli/az.completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/src/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/src/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/src/google-cloud-sdk/completion.zsh.inc'; fi
+
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
