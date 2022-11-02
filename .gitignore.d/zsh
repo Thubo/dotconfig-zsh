@@ -2,12 +2,7 @@
 !/.gitignore.d
 !/.gitignore.d/zsh
 !/.zsh
+!/.zsh/*.zsh
 !/.zsh/README.md
-!/.zsh/completion
-!/.zsh/completion/*
-!/.zsh/lib
-!/.zsh/lib/zstyle.zsh
-!/.zsh/themes
-!/.zsh/themes/thubo.zsh-theme
-!/.zsh/zsh_startup.iterm
+!/.zsh/.mrconfig
 !/.zshrc

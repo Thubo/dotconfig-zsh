@@ -36,7 +36,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -67,15 +67,17 @@ plugins=(
   docker
   docker-compose
   extract
-  fzf-tab
-  fzf-zsh-plugin
   gcloud
   git
   helm
   kubectl
   ripgrep
-  zsh-vi-mode
   z
+
+  fzf-tab
+  fzf-zsh-plugin
+  zsh-kubectl-prompt
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -83,6 +85,9 @@ source $ZSH/oh-my-zsh.sh
 #
 # User configuration
 #
+
+# kubectl prompt
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 # Default editor
 export EDITOR=vim
