@@ -1,5 +1,17 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/.bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' frequency 6
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -14,13 +26,22 @@ ZSH_THEME="robbyrussell"
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -42,56 +63,26 @@ ZSH_CUSTOM=$HOME/.zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   asdf
+  brew
   docker
   docker-compose
+  extract
   fzf-tab
   fzf-zsh-plugin
   gcloud
   git
+  helm
   kubectl
   ripgrep
+  zsh-vi-mode
   z
 )
 
-# FZF
-export FZF_PREVIEW_WINDOW='right:65%:nohidden'
-
-# Search filenames in current dir
-function fz()
-{
-  args=${@-"."}
-  # args=$@
-  vim -c "Files $args"
-}
-
-# Search content of files in current dir
-function fzr()
-{
-  args=${@-"."}
-  # args=$@
-  vim -c "Rg $args"
-}
-
-# fd - cd to selected directory
-function fzd()
-{
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
-
-# User configuration
-
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.bin:$PATH
-export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
-source $ZSH_CUSTOM/lib/zstyle.zsh
 
-# Further config
-# unsetopt share_history
+#
+# User configuration
+#
 
 # Default editor
 export EDITOR=vim
@@ -104,11 +95,6 @@ bindkey "^N" down-line-or-beginning-search
 # See also http://www.zsh.org/mla/users/2009/msg01018.html
 # bindkey -M menuselect '^M' .accept-line
 
-# Dircolors
-if type dircolors > /dev/null; then
-  eval "`dircolors`"
-fi
-
 # Source aliases
 # if [ -d $HOME/.helper/aliases ]; then
   # for file in $HOME/.helper/aliases/*.alias; do . $file; done
@@ -117,11 +103,6 @@ fi
 # Source functions
 # if [ -d $HOME/.helper/functions ]; then
   # for file in $HOME/.helper/functions/*.function; do . $file; done
-# fi
-
-# Source completions
-# if [ -d $HOME/.zsh/completion ]; then
-  # for file in $HOME/.zsh/completion/*.completion; do . $file; done
 # fi
 
 # iterm2 integration
