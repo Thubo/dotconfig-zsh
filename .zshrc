@@ -100,6 +100,11 @@ bindkey "^N" down-line-or-beginning-search
 # See also http://www.zsh.org/mla/users/2009/msg01018.html
 # bindkey -M menuselect '^M' .accept-line
 
+# make zsh-vi-mode compatible with fzf plugins
+function zvm_after_init() {
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
+
 # Source aliases
 # if [ -d $HOME/.helper/aliases ]; then
   # for file in $HOME/.helper/aliases/*.alias; do . $file; done
