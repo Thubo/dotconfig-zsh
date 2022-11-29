@@ -86,6 +86,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 #
 
+source $ZSH_CUSTOM/02_vcsh.zsh
+
 # kubectl prompt
 RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
@@ -122,8 +124,8 @@ function zvm_after_init() {
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
 # Dynamic 'motd' - not realy a motd, but similar function
-# if type dynmotd > /dev/null 2>&1 ; then
-  # dynmotd
-# fi
+if type dynmotd > /dev/null 2>&1 ; then
+  dynmotd
+fi
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
