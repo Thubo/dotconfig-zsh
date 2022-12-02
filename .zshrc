@@ -70,6 +70,7 @@ plugins=(
   gcloud
   git
   helm
+  iterm2
   kubectl
   ripgrep
   z
@@ -116,9 +117,6 @@ function zvm_after_init() {
 # if [ -d $HOME/.helper/functions ]; then
   # for file in $HOME/.helper/functions/*.function; do . $file; done
 # fi
-
-# iterm2 integration
-[[ -f ~/.iterm2_shell_integration.zsh ]] && source ~/.iterm2_shell_integration.zsh
 
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
