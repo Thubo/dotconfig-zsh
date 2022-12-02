@@ -73,12 +73,13 @@ plugins=(
   iterm2
   kubectl
   ripgrep
-  z
+  ssh-agent
 
   fzf-tab
   fzf-zsh-plugin
   zsh-kubectl-prompt
   zsh-vi-mode
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,6 +99,9 @@ export EDITOR=vim
 # ...using CTRL+P/N
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
+
+# Edit Command Line Input
+bindkey '^x^e' edit-command-line
 
 # Make <Enter> work in tab completion on the first try
 # See also http://www.zsh.org/mla/users/2009/msg01018.html

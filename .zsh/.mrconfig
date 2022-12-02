@@ -9,3 +9,6 @@ checkout = git clone 'https://github.com/superbrothers/zsh-kubectl-prompt.git' '
 
 [plugins/zsh-vi-mode]
 checkout = git clone 'https://github.com/jeffreytse/zsh-vi-mode' 'zsh-vi-mode'
+
+[plugins/zsh-z]
+checkout = git clone 'https://github.com/agkozak/zsh-z.git' 'zsh-z'
