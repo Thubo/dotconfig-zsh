@@ -22,9 +22,26 @@ function updateme {
       *)          machine="UNKNOWN:${unameOut}"
   esac
 
+  echo
+  echo "# Updating configs, repos and tools"
+  echo
+
   vcsh pull
 
   vim +PlugUpgrade +PlugUpdate +qall
+
+  if [[ -f $ZSH_CUSTOM/.mrconfig ]] ; then
+    mr -j5 -c $ZSH_CUSTOM/.mrconfig up
+  fi
+
+  if [[ -f $HOME/.src/.mrconfig ]] ; then
+    mr -j5 -c $HOME/.src/.mrconfig up
+  fi
+
+  if [[ -f $HOME/.bin/vcsh ]] ; then
+    curl -fsLS https://github.com/RichiH/vcsh/releases/latest/download/vcsh-standalone.sh > $HOME/.bin/vcsh
+    chmod +x $HOME/.bin/vcsh
+  fi
 
   echo
   echo "# Running update commands for ${machine}"
@@ -44,22 +61,18 @@ function updateme {
   fi
 
   if command -v docker &> /dev/null ; then
+
+    echo
+    echo "# Updating Docker Containers via Watchtower"
+    echo
+
     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro containrrr/watchtower --run-once 2>&1
     docker system prune -af --volumes
   fi
 
-  if [[ -f $ZSH_CUSTOM/.mrconfig ]] ; then
-    mr -j5 -c $ZSH_CUSTOM/.mrconfig up
-  fi
-
-  if [[ -f $HOME/.src/.mrconfig ]] ; then
-    mr -j5 -c $HOME/.src/.mrconfig up
-  fi
-
-  if [[ -f $HOME/.bin/vcsh ]] ; then
-    curl -fsLS https://github.com/RichiH/vcsh/releases/latest/download/vcsh-standalone.sh > $HOME/.bin/vcsh
-    chmod +x $HOME/.bin/vcsh
-  fi
+  echo
+  echo "# Oh-My-ZSH"
+  echo
 
   omz update -y
 
