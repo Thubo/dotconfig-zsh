@@ -91,7 +91,9 @@ source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/02_vcsh.zsh
 
 # kubectl prompt
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+if command -v kubectl &> /dev/null; then
+  RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+fi
 
 # Default editor
 export EDITOR=vim
