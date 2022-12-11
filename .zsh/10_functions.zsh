@@ -52,6 +52,15 @@ function updateme {
     mr -j5 -c $ZSH_CUSTOM/.mrconfig up
   fi
 
+  if [[ -f $HOME/.src/.mrconfig ]] ; then
+    mr -j5 -c $HOME/.src/.mrconfig up
+  fi
+
+  if [[ -f $HOME/.bin/vcsh ]] ; then
+    curl -fsLS https://github.com/RichiH/vcsh/releases/latest/download/vcsh-standalone.sh > $HOME/.bin/vcsh
+    chmod +x $HOME/.bin/vcsh
+  fi
+
   omz update -y
 
 }
