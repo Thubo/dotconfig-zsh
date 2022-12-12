@@ -99,8 +99,10 @@ fi
 export EDITOR=vim
 
 # ...using CTRL+P/N
-bindkey "^P" up-line-or-beginning-search
-bindkey "^N" down-line-or-beginning-search
+# bindkey "^P" up-line-or-beginning-search
+bindkey "^P" up-line-or-search
+# bindkey "^N" down-line-or-beginning-search
+bindkey "^N" down-line-or-search
 
 # Edit Command Line Input
 bindkey '^x^e' edit-command-line
