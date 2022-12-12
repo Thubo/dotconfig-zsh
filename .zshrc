@@ -103,7 +103,6 @@ function right_prompt() {
 
   if command -v kubectl &> /dev/null; then
     autoload -U colors; colors
-    local color="blue"
 
     if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
       color=red
