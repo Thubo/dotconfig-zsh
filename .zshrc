@@ -62,8 +62,10 @@ ZSH_CUSTOM=$HOME/.zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  1password
   asdf
   brew
+  colorize
   docker
   docker-compose
   extract
@@ -73,6 +75,7 @@ plugins=(
   iterm2
   kubectl
   ripgrep
+  rsync
   ssh-agent
 
   fzf-tab
@@ -91,9 +94,27 @@ source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/02_vcsh.zsh
 
 # kubectl prompt
-if command -v kubectl &> /dev/null; then
-  RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-fi
+zstyle ':zsh-kubectl-prompt:' separator '|'
+zstyle ':zsh-kubectl-prompt:' preprompt '('
+zstyle ':zsh-kubectl-prompt:' postprompt ')'
+zstyle ':zsh-kubectl-prompt:' namespace false
+
+function right_prompt() {
+
+  if command -v kubectl &> /dev/null; then
+    autoload -U colors; colors
+    local color="blue"
+
+    if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
+      color=red
+    fi
+
+    echo "%{$fg[blue]%}$ZSH_KUBECTL_PROMPT%{$reset_color%}"
+  fi
+
+}
+
+RPROMPT='$(right_prompt)'
 
 # Default editor
 export EDITOR=vim
