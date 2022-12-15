@@ -60,7 +60,7 @@ function updateme {
     sudo apt-get autoremove -y
   fi
 
-  if command -v docker &> /dev/null ; then
+  if command -v docker &> /dev/null && docker ps &> /dev/null ; then
 
     echo
     echo "# Updating Docker Containers via Watchtower"
