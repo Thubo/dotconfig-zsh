@@ -25,3 +25,9 @@ function fzd()
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+
+function fza()
+{
+  args=${@-"."}
+  print -z $(alias | fzf --query="${args}" | cut -d "=" -f1)
+}
