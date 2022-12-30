@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.bin:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -17,7 +24,8 @@ zstyle ':omz:update' frequency 6
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="candy"
+# ZSH_THEME="candy"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -81,7 +89,6 @@ plugins=(
 
   fzf-tab
   fzf-zsh-plugin
-  zsh-kubectl-prompt
   zsh-vi-mode
   zsh-z
 )
@@ -91,30 +98,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # User configuration
 #
-
-source $ZSH_CUSTOM/02_vcsh.zsh
-
-# kubectl prompt
-zstyle ':zsh-kubectl-prompt:' separator '|'
-zstyle ':zsh-kubectl-prompt:' preprompt '('
-zstyle ':zsh-kubectl-prompt:' postprompt ')'
-zstyle ':zsh-kubectl-prompt:' namespace false
-
-function right_prompt() {
-
-  if command -v kubectl &> /dev/null; then
-    autoload -U colors; colors
-
-    if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
-      color=red
-    fi
-
-    echo "%{$fg[blue]%}$ZSH_KUBECTL_PROMPT%{$reset_color%}"
-  fi
-
-}
-
-RPROMPT='$(right_prompt)'
 
 # Default editor
 export EDITOR=vim
@@ -156,3 +139,6 @@ if type dynmotd > /dev/null 2>&1 ; then
 fi
 #-----------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------#
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.zsh/.p10k.zsh ]] || source ~/.zsh/.p10k.zsh
