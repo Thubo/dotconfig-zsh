@@ -88,8 +88,8 @@ plugins=(
   ssh-agent
 
   fzf-tab
-  fzf-zsh-plugin
   zsh-vi-mode
+  fzf-zsh-plugin
   zsh-z
 )
 
@@ -101,6 +101,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Default editor
 export EDITOR=vim
+
+# FZF Plugin
+export FZF_CTRL_T_COMMAND='rg --files --no-ignore --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!vendor/*" 2> /dev/null'
 
 # ...using CTRL+P/N
 # bindkey "^P" up-line-or-beginning-search
