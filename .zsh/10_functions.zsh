@@ -52,6 +52,7 @@ function updateme {
     brew update --cask
     brew upgrade
     asdf plugin update --all
+    gcloud components update -q
   fi
 
   if [[ ${machine} == "Linux" ]] ; then
