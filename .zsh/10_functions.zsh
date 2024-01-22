@@ -31,11 +31,11 @@ function updateme {
   vim +PlugUpgrade +PlugUpdate +qall
 
   if [[ -f $ZSH_CUSTOM/.mrconfig ]] ; then
-    mr -j5 -c $ZSH_CUSTOM/.mrconfig up
+    mr -j10 -m -c $ZSH_CUSTOM/.mrconfig up
   fi
 
   if [[ -f $HOME/.src/.mrconfig ]] ; then
-    mr -j5 -c $HOME/.src/.mrconfig up
+    mr -j10 -m -c $HOME/.src/.mrconfig up
   fi
 
   if [[ -f $HOME/.bin/vcsh ]] ; then
