@@ -1,3 +1,15 @@
+function get_file_age_seconds() {
+    local filename="$1"
+    if [ -f "$filename" ]; then
+        local current_time=$(date +%s)
+        local last_modified=$(stat -c "%Y" "$filename")
+        local age=$((current_time - last_modified))
+        echo "$age"
+    else
+        echo "File not found or not a regular file"
+    fi
+}
+
 function wait_for_ssh {
 
   ssh $1

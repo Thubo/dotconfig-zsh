@@ -9,6 +9,10 @@ fi
 export PATH=$HOME/.bin:$PATH
 export PATH=/usr/local/bin:$PATH
 
+# LC Stuff
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
