@@ -87,7 +87,6 @@ plugins=(
   helm
   iterm2
   kubectl
-  ripgrep
   rsync
   ssh-agent
 
