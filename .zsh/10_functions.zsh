@@ -63,8 +63,14 @@ function updateme {
     brew update
     brew update --cask
     brew upgrade
-    asdf plugin update --all
-    gcloud components update -q
+
+    if command -v asdf &> /dev/null; then
+      asdf plugin update --all
+    fi
+
+    if command -v gcloud &> /dev/null; then
+      gcloud components update -q
+    fi
   fi
 
   if [[ ${machine} == "Linux" ]] ; then
@@ -74,11 +80,9 @@ function updateme {
   fi
 
   if command -v docker &> /dev/null && docker ps &> /dev/null ; then
-
     echo
     echo "# Updating Docker Containers via Watchtower"
     echo
-
     docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro containrrr/watchtower --run-once 2>&1
     docker system prune -af --volumes
   fi
