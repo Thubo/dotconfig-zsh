@@ -91,8 +91,9 @@ plugins=(
   ssh-agent
 
   fzf-tab
-  zsh-vi-mode
-  fzf-zsh-plugin
+  # zsh-vi-mode
+  zsh-fzf-history-search
+  # fzf-zsh-plugin
   zsh-z
 )
 
@@ -116,6 +117,9 @@ bindkey "^N" down-line-or-search
 
 # Edit Command Line Input
 bindkey '^x^e' edit-command-line
+
+# Search
+# bindkey '^R' history-incremental-search-backward
 
 # Make <Enter> work in tab completion on the first try
 # See also http://www.zsh.org/mla/users/2009/msg01018.html

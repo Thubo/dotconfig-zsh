@@ -61,7 +61,6 @@ function updateme {
 
   if [[ ${machine} == "Mac" ]] ; then
     brew update
-    brew update --cask
     brew upgrade
 
     if command -v asdf &> /dev/null; then
