@@ -1,13 +1,19 @@
 function get_file_age_seconds() {
-    local filename="$1"
-    if [ -f "$filename" ]; then
-        local current_time=$(date +%s)
-        local last_modified=$(stat -c "%Y" "$filename")
-        local age=$((current_time - last_modified))
-        echo "$age"
+  local filename="$1"
+  if [ -f "$filename" ]; then
+    local current_time=$(date +%s)
+    if [[ $(uname) == 'Darwin' ]]; then
+      local last_modified=$(stat -f '%Sm' "$filename")
+      local last_modified_epoch=$(date -j -f '%b %d %T %Y' $last_modified +%s)
     else
-        echo "File not found or not a regular file"
+      local last_modified=$(stat -c "%Y" "$filename")
+      local last_modified_epoch=$last_modified
     fi
+    local age=$((current_time - last_modified_epoch))
+    echo "$age"
+  else
+    echo "File not found or not a regular file"
+  fi
 }
 
 function wait_for_ssh {
@@ -15,10 +21,10 @@ function wait_for_ssh {
   ssh $1
   while test $? -gt 0
   do
-     echo "Trying again in 5s..."
-     sleep 5 # highly recommended - if it's in your local network, it can try an awful lot pretty quick...
-     echo "Trying again..."
-     ssh $1
+    echo "Trying again in 5s..."
+    sleep 5 # highly recommended - if it's in your local network, it can try an awful lot pretty quick...
+    echo "Trying again..."
+    ssh $1
   done
 
 }
@@ -27,11 +33,11 @@ function updateme {
 
   unameOut="$(uname -s)"
   case "${unameOut}" in
-      Linux*)     machine=Linux;;
-      Darwin*)    machine=Mac;;
-      CYGWIN*)    machine=Cygwin;;
-      MINGW*)     machine=MinGw;;
-      *)          machine="UNKNOWN:${unameOut}"
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
   esac
 
   echo
