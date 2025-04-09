@@ -82,14 +82,15 @@ function updateme {
     sudo apt-get update
     sudo apt-get upgrade -y
     sudo apt-get autoremove -y
-  fi
 
-  if command -v docker &> /dev/null && docker ps &> /dev/null ; then
-    echo
-    echo "# Updating Docker Containers via Watchtower"
-    echo
-    docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro containrrr/watchtower --run-once 2>&1
-    docker system prune -af --volumes
+    if command -v docker &> /dev/null && docker ps &> /dev/null ; then
+      echo
+      echo "# Updating Docker Containers via Watchtower"
+      echo
+      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro containrrr/watchtower --run-once 2>&1
+      docker system prune -af --volumes
+    fi
+
   fi
 
   echo
