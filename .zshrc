@@ -130,6 +130,11 @@ function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
 
+# zoxide
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init --cmd cd zsh)"
+fi
+
 # Source aliases
 # if [ -d $HOME/.helper/aliases ]; then
   # for file in $HOME/.helper/aliases/*.alias; do . $file; done
