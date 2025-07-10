@@ -100,3 +100,31 @@ function updateme {
   omz update -y
 
 }
+
+clear_kubeconfig() {
+  if [ -n "$HOME" ]; then
+    # delete any existing ~/.kube/config
+    find "$HOME/.kube" -maxdepth 1 -type f -name config -print0 | xargs -0 rm --
+
+    # show currently available contexts (should be empty)
+    kubectl config get-contexts
+  fi
+}
+
+set_kubeconfig() {
+  if [ -n "$HOME" ]; then
+    # delete any existing ~/.kube/config
+    find "$HOME/.kube" -maxdepth 1 -type f -name config -print0 | xargs -0 rm --
+
+    # concat the new ~/.kube/config from yaml files
+    local KUBECONFIG=$(find "$HOME/.kube" -type f -name '*.yaml' | sort | tr '\n' ':' | sed 's/:$//')
+    if [ -z "$KUBECONFIG" ]; then
+      echo "No .yaml files found in $HOME/.kube/"
+      return 1
+    fi
+    KUBECONFIG=$(find "$HOME/.kube" -type f -name '*.yaml' | sort | tr '\n' ':' | sed 's/:$//') kubectl config view --flatten > "$HOME/.kube/config"
+
+    # show currently available contexts (should contain the contexts from the yaml files)
+    kubectl config get-contexts
+  fi
+}
