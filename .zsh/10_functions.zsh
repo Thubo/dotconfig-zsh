@@ -87,7 +87,7 @@ function updateme {
       echo
       echo "# Updating Docker Containers via Watchtower"
       echo
-      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro containrrr/watchtower --run-once 2>&1
+      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc/localtime:/etc/localtime:ro nickfedor/watchtower:latest --run-once 2>&1
       docker system prune -af --volumes
     fi
 
