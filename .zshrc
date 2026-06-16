@@ -90,14 +90,28 @@ plugins=(
   rsync
   ssh-agent
 
-  fzf-tab
   # zsh-vi-mode
   zsh-fzf-history-search
   # fzf-zsh-plugin
   zsh-z
+  fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Enable classic zsh completion listing on ambiguous matches.
+setopt AUTO_LIST
+setopt LIST_AMBIGUOUS
+
+# Keep Tab completion stable: use fzf-tab only when fzf is installed.
+if command -v fzf >/dev/null 2>&1; then
+  (( ${+widgets[fzf-tab-complete]} )) && bindkey -M emacs '^I' fzf-tab-complete
+  (( ${+widgets[fzf-tab-complete]} )) && bindkey -M viins '^I' fzf-tab-complete
+else
+  (( ${+functions[disable-fzf-tab]} )) && disable-fzf-tab
+  bindkey -M emacs '^I' expand-or-complete
+  bindkey -M viins '^I' expand-or-complete
+fi
 
 #
 # User configuration
