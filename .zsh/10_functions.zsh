@@ -79,9 +79,10 @@ function updateme {
   fi
 
   if [[ ${machine} == "Linux" ]] ; then
-    sudo apt-get update
-    sudo apt-get upgrade -y
-    sudo apt-get autoremove -y
+    sudo apt update
+    sudo apt dist-upgrade -y
+    sudo apt autoremove -y
+    sudo apt autoclean
 
     if command -v docker &> /dev/null && docker ps &> /dev/null ; then
       echo
